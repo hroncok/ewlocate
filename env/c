@@ -1,0 +1,19 @@
+Index (computer science)
+From Wikipedia, the free encyclopedia
+In computer science, an index can be:
+an integer that identifies an array element
+a data structure that enables sublinear-time lookup (an associative array)
+Contents 
+1 Array element identifier
+2 Support for fast lookup
+3 References
+4 See also
+Array element identifier
+find this
+When data objects are stored in an array, individual objects are selected by an index that is usually a non-negative scalar integer. Indices are also called subscripts.
+There are three ways in which the elements of an array can be indexed:
+0 (zero-based indexing): The first element of the array is indexed by subscript of 0.[1]
+1 (one-based indexing): The first element of the array is indexed by subscript of 1.[2]
+n (n-based indexing): The base index of an array can be freely chosen. Usually programming languages allowing n-based indexing also allow negative index values and other scalar data types like enumerations, or characters may be used as an array index.
+Arrays can have multiple dimensions, thus it is not uncommon to access an array using multiple indices. For example a two dimensional array A with three rows and four columns might provide access to the element at the 2nd row and 4th column by the expression: A[1, 3] (in a row major language) and A[3, 1] (in a column major language) in the case of a zero-based indexing system. Thus two indices are used for a two dimensional array, three for a three dimensional array, and n for an n dimensional array.
+Support for fast lookup

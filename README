@@ -1,0 +1,48 @@
+This is the words indexer, call (e|w)dbzer to index the files and included words, call (e|w)locate to find words in files. The goal is that even if indexing takes ages, searching is immediate. Reindexing also checks mtime, so it takes less time when indexing next time.
+
+USAGE
+
+(e|w)dbzer has several options:
+
+  --help or -h
+    Displays this text.
+
+  --root or -r
+    Sets the index root, your home directory is default. Every root has it own database.
+
+  --case-sensitive or -c
+    If used, all the process is case sensitive, insensitive is default.
+
+  --num-separate or -n
+    If used, numbers are considered as separators, default they are considered as letters.
+
+  --hidden or -i
+    If used, hidden files are indexed and hidden directories are explored, default ignores both.
+
+  --force or -f
+    Don't update previously created database, create a new one. Don't forget to use this option when changing three above options.
+
+  --verbose or -v
+    Prints loads of information on standard output. Might waste time.
+
+(e|w)locate has several options too:
+
+One of the arguments ought to be the word to find.
+
+  --help or -h
+    Displays this text.
+
+  --root or -r
+    Sets the index root, your home directory is default. Every root has it own database.
+
+By design, you cannot change --case-sensitive, --hidden or --num-separate when searching.
+
+LIMITATIONS
+
+This program isn't perfect, there are several limitations. It only works with ASCII text files. Symlinks are indexed when linking a file and ignored, when linking a directory (to prevent infinite loops). The indexing is slow and the database is big. But it works.
+
+There is no option to save default params, but you can use alias for that.
+
+DIFFERENCE BETWEEN E & W SET
+
+There are two pairs of applications. The executables prefixed with e- sre optimalized for searching using regular expressions. Executables prefixed with -w are optimalized for searching full words. Those two pairs stores thgeir data in different locations. When using regular expressions, don't forget to write them in 'quotes', if they contains any special characters, like $.

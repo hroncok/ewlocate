@@ -1,0 +1,3 @@
+Zadání není dostupné z adresy http://star.fit.cvut.cz/~kesslr/pa2/semestralky.txt, proto jej nemohu citovat.
+
+V zásedě šlo ale o to, vytvořit program na indexaci obsahu souborů a program na vyhledávání slov/regulárních výrazů v indexu.

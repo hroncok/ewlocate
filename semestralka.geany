@@ -1,0 +1,51 @@
+
+[indentation]
+indent_width=4
+indent_type=1
+indent_hard_tab_width=8
+detect_indent=true
+indent_mode=2
+
+[project]
+name=semestralka
+base_path=/home/churchyard/skola/fit/pa2/semestralka
+description=Semestrální práce z PA2.
+
+[long line marker]
+long_line_behaviour=1
+long_line_column=72
+
+[files]
+current_page=2
+FILE_NAME_0=0;C++;0;16;1;1;1;/home/churchyard/skola/fit/pa2/semestralka/bitmap.cpp;0;4
+FILE_NAME_1=0;C++;0;16;1;1;1;/home/churchyard/skola/fit/pa2/semestralka/bitmap.hpp;0;4
+FILE_NAME_2=483;C++;0;16;1;1;1;/home/churchyard/skola/fit/pa2/semestralka/config.cpp;0;4
+FILE_NAME_3=1522;C++;0;16;1;1;1;/home/churchyard/skola/fit/pa2/semestralka/config.hpp;0;4
+FILE_NAME_4=413;C++;0;16;1;1;1;/home/churchyard/skola/fit/pa2/semestralka/db.cpp;0;4
+FILE_NAME_5=1160;C++;0;16;1;1;1;/home/churchyard/skola/fit/pa2/semestralka/db.hpp;0;4
+FILE_NAME_6=3159;C++;0;16;1;1;1;/home/churchyard/skola/fit/pa2/semestralka/edb.cpp;0;4
+FILE_NAME_7=346;C++;0;16;1;1;1;/home/churchyard/skola/fit/pa2/semestralka/edb.hpp;0;4
+FILE_NAME_8=0;C++;0;16;1;1;1;/home/churchyard/skola/fit/pa2/semestralka/edbzer.cpp;0;4
+FILE_NAME_9=145;C++;0;16;1;1;1;/home/churchyard/skola/fit/pa2/semestralka/elocate.cpp;0;4
+FILE_NAME_10=468;C++;0;16;1;1;1;/home/churchyard/skola/fit/pa2/semestralka/file.cpp;0;4
+FILE_NAME_11=0;C++;0;16;1;1;1;/home/churchyard/skola/fit/pa2/semestralka/file.hpp;0;4
+FILE_NAME_12=313;C++;0;16;1;1;1;/home/churchyard/skola/fit/pa2/semestralka/mhregex.cpp;0;4
+FILE_NAME_13=159;C++;0;16;1;1;1;/home/churchyard/skola/fit/pa2/semestralka/mhregex.hpp;0;4
+FILE_NAME_14=3144;C++;0;16;1;1;1;/home/churchyard/skola/fit/pa2/semestralka/set.cpp;0;4
+FILE_NAME_15=2667;C++;0;16;1;1;1;/home/churchyard/skola/fit/pa2/semestralka/wdb.cpp;0;4
+FILE_NAME_16=555;C++;0;16;1;1;1;/home/churchyard/skola/fit/pa2/semestralka/wdb.hpp;0;4
+FILE_NAME_17=0;C++;0;16;1;1;1;/home/churchyard/skola/fit/pa2/semestralka/wdbzer.cpp;0;4
+FILE_NAME_18=246;C++;0;16;1;1;1;/home/churchyard/skola/fit/pa2/semestralka/wlocate.cpp;0;4
+FILE_NAME_19=127;C++;0;16;1;1;1;/home/churchyard/skola/fit/pa2/semestralka/word.cpp;0;4
+FILE_NAME_20=0;C++;0;16;1;1;1;/home/churchyard/skola/fit/pa2/semestralka/word.hpp;0;4
+FILE_NAME_21=3659;C++;0;16;1;1;1;/home/churchyard/skola/fit/pa2/semestralka/wordtree.cpp;0;4
+FILE_NAME_22=1057;C++;0;16;1;1;1;/home/churchyard/skola/fit/pa2/semestralka/wordtree.hpp;0;4
+
+[build-menu]
+C++FT_00_LB=_Přeložit
+C++FT_00_CM=g++ -Wall -pedantic -g "%f" -o "%e"
+C++FT_00_WD=
+C++FT_01_LB=S_estavit
+C++FT_01_CM=g++ -Wall -pedantic -g -c "%f"
+C++FT_01_WD=
+filetypes=C++;

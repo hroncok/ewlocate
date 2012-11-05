@@ -1,0 +1,4 @@
+To install, run following commands:
+
+make all
+su -c "make install"

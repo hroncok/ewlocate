@@ -1,0 +1,76 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{subfig}
+\usepackage{url}
+\usepackage[colorlinks]{hyperref}
+
+%\usepackage{czech}
+\usepackage[czech]{babel}
+
+
+\title{Indexování obsahu souborů}
+\author{Miroslav Hrončok}
+
+\begin{document}
+
+
+\maketitle
+
+\section{Zadání}
+
+Mým úkolem vylo vytvořit spolupracující dvojici programů. Jeden bude indexovat obsah souborů a druhý bude využívat výsledky práce toho prvního. Vyhledání slova ve větším množství dat je časově náročné, a proto je tento způsob efektivní. Celá koncepce funguje podobně jako linuxové programy updatedb a locate, které ale indexují pouze názvy souborů. Můj program indexuje obsažená slova.
+
+\section{Vlastnosti}
+
+Stanovil jsem si některé cíle, které by měl program splňovat z~pohledu uživatele:
+
+\subsection{POSIX}
+
+Program by měl bez problému fungovat na operačním systému posixového typu. Testován byl však pouze v~GNU/Linuxu.
+
+\subsection{Variabilita}
+
+Program umožňuje jeho uživateli určitou variabilitu. Je možno se rozhodnout, který adresář chce indexovat, zda indexovat i skryté soubory a složky, zda záleží na velikosti písmen, či zda čísla figurují jako součást slov, nebo jako jejich separátory. Zároveň si uživatele může vybrat ze dvou párů programů. Ty, které začínají písmenem~e, prohledávají soubory dle regulárních výrazů (jeden výraz ale může pokrýt pouze jedno slovo) a ty, které začínají písmenem~w, prohledávají soubory pouze podle celých slov. Oba páry programů jsou optimalizované pro konkrétní užití.
+
+\subsection{Indexace změn}
+
+Po první indexaci zvoleného adresáře se indexují pouze změny. Další indexace jsou tedy znatelně rychlejší, než ta prvotní.
+
+\section{Programování}
+
+Kromě cílů, které pocítí uživatel, jsem se snažil dodržet i některá pravidla jako polymorfismus, zapouzdření, modularita apod.
+
+\subsection{Jak to funguje}
+
+Princip indexace je v~zásadě jednoduchý:
+
+\begin{enumerate}
+ \item Načte se seznam minule indexovaných souborů a jejich časů úpravy při minulé indexaci
+ \item Načte se seznam reálných souborů a případné rozdíly se promítnou do již načtených dat
+ \item Pokud došlo ke změnám, načte se seznam slov obsahující informaci, ve kterých souborech se dané slova nacházejí
+ \item Smažou se data z~neexistujících a starých souborů
+ \item Nově vytvořené a upravené soubory se zindexují
+ \item Slova a nový seznam souborů se uloží do skryté složky v~indexovaném adresáři
+\end{enumerate}
+
+Ve variantě~w je každé slovo je reprezentováno jedním souborem, kde název souboru odpovídá slovu a obsah souboru je seznamem souborů, které dané slovo obsahují. Vyhledání slova pak předupravuje pouze otevření konkrétního souboru. Ve variantě~e jsou pak jednotlivá slova uložena do jednoho souboru, protože se všechna indexovaná slova stejně musejí porovnat s~regulárním výrazem.
+
+Pro pochopení vztahů mezi třídami jsem dle požadavku vytvořil schma, které najdete v~souboru \emph{classes.eps}.
+
+\section{Omezení}
+
+Program samozřejmě není všemocný a má nějaká omezení. Indexuje pouze ASCII textové soubory, takže s~háčky a čárkami si neporadí. Vyhledávání pomocí regulárních výrazů je navíc omezeno pouze na jedno slovo -- nelze vyhledávat sousloví.
+
+\section{Test}
+
+Pro test jsem zvolil zdrojové kódy uživatelského prostředí Xfce 4.8 [\url{http://wiki.xfce.org/dev/howto/git}]. Jejich celková velikost je 151,4 MB a obsahují celkem 8276 položek (adresářů a souborů). První indexace trvala u~obou variant necelých 8~minut. Samotné vyhledání z~podstaty proběhlo prakticky okamžitě. V~adresáři env jsou testovací soubory, které jsem používal během ladění (obsahují různé nástrahy), můžete je použít pro časově méně náročný test. Před použitím si přečtěte README nebo zavolejte program edbzer nebo wdbzer s~argumentem --help, jinak bude indexovat vaši domovskou složku, což může trval v~závislosti na její velikosti velmi dlouho.
+
+Pokud budete testovat regulární výrazy, nezapomeňte argument programu uvést v~jednoduchých uvozovkách, aby interpret řádky nespolkl speciální znaky.
+
+\end{document}

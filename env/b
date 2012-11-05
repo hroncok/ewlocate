@@ -1,0 +1,38 @@
+// don't look at this code, it's old
+db & db::loadFileList() {
+	if (cf.isForce()) {
+		vecho("Not loading the file list (force).");
+		return *this;
+	}
+	vecho("Loading the file list...");
+	string line;
+	ifstream filelist(FLIST);
+	if (filelist.is_open()) {
+		while (filelist.good()) {
+			getline(filelist,line);
+			// Ignore empty lines (probably only the last one)
+			if (line == "")
+				continue;
+			size_t colon = line.find(":");
+			if (colon==string::npos) {
+				vecho("The file list is corrupted. The database (if any) will be recereated.");
+				delFiles();
+				break;
+			}
+			string filename = line.substr(0,colon);
+			int mtime;
+			istringstream iss(line.substr(colon+1));
+			if ((iss >> mtime).fail()) {
+				vecho("The file list is corrupted. The database (if any) will be recereated.");
+				delFiles();
+				break;
+			}
+			addFile(file(filename, mtime));
+		}
+		filelist.close();
+	} else {
+		vecho("The file list is not existing. The database (if any) will be recereated.");
+	}
+	return *this;
+	oucc
+}

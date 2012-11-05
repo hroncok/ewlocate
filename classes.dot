@@ -1,0 +1,45 @@
+digraph classes {
+	node [shape=box];
+	
+	config -> iconfig;
+	config -> sconfig;
+	db -> edb;
+	db -> wdb;
+	
+	edge [style=dotted];
+	
+	iconfig -> db;
+	sconfig -> db;
+	wordtree -> db;
+	word -> wordtree;
+	set -> db;
+	bitmap -> word;
+	word -> db;
+	file -> db;
+	
+	node [shape=none];
+	regmatch[label="regmatch()"]
+	regmatch -> edb;
+	
+	node [shape=ellipse];
+	
+	edb -> elocate;
+	edb -> edbzer;
+	
+	wdb -> wlocate;
+	wdb -> wdbzer;
+	
+	subgraph cluster {
+		label = "LEGEND:";
+		style=filled;
+		color=lightgrey;
+		function[shape=none,label="function()"];
+		executable[shape=ellipse];
+		node [shape=box];
+		class;
+		subclass;
+		function -> class [label=" use"];
+		class -> subclass [label=" inherit",style=filled];
+		subclass -> executable [label=" is in"];
+	}
+}
